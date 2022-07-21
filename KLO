@@ -1,0 +1,215 @@
+local GodBool = false
+
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local GiveGod = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local God = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+local TextBox = Instance.new("TextBox")
+local UICorner_4 = Instance.new("UICorner")
+local Desc = Instance.new("TextLabel")
+local Title = Instance.new("TextLabel")
+local UICorner_5 = Instance.new("UICorner")
+local RemoveGod = Instance.new("TextButton")
+local UICorner_6 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.Active = true
+main.BackgroundColor3 = Color3.fromRGB(90, 90, 90)
+main.Position = UDim2.new(0.476199239, 0, 0.295426667, 0)
+main.Size = UDim2.new(0, 528, 0, 284)
+main.Active = true
+
+UICorner.CornerRadius = UDim.new(0, 11)
+UICorner.Parent = main
+
+GiveGod.Name = "GiveGod"
+GiveGod.Parent = main
+GiveGod.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+GiveGod.Position = UDim2.new(0.515155554, 0, 0.483173668, 0)
+GiveGod.Size = UDim2.new(0, 200, 0, 50)
+GiveGod.Font = Enum.Font.GothamBlack
+GiveGod.Text = "Give God"
+GiveGod.TextColor3 = Color3.fromRGB(255, 255, 255)
+GiveGod.TextScaled = true
+GiveGod.TextSize = 14.000
+GiveGod.TextWrapped = true
+GiveGod.MouseButton1Down:Connect(function()
+	if game.Players.LocalPlayer.Backpack:FindFirstChild("sword") then
+		if game.Workspace[TextBox.Text].Humanoid.Health > 0 then
+			game.Players.LocalPlayer.Backpack.sword.Parent = game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Character.sword.Handle.dmg.RemoteEvent:FireServer(game.Workspace[TextBox.Text].Humanoid, - math.huge)
+			game.Players.LocalPlayer.Character.sword.Parent = game.Players.LocalPlayer.Backpack
+                print("lol ez")
+	end 
+     end
+end)
+end)
+
+UICorner_2.CornerRadius = UDim.new(0, 11)
+UICorner_2.Parent = GiveGod
+
+God.Name = "God"
+God.Parent = main
+God.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+God.Position = UDim2.new(0.0256959312, 0, 0.226851463, 0)
+God.Size = UDim2.new(0, 200, 0, 50)
+God.Font = Enum.Font.GothamBlack
+God.Text = "Op God Mode"
+God.TextColor3 = Color3.fromRGB(255, 255, 255)
+God.TextScaled = true
+God.TextSize = 14.000
+God.TextWrapped = true
+God.MouseButton1Down:Connect(function()
+	if game.Players.LocalPlayer.Backpack:FindFirstChild("sword") then
+		game.Players.LocalPlayer.Backpack.sword.Handle.dmg.RemoteEvent:FireServer(game.Players.LocalPlayer.Character.Humanoid, - math.huge)
+		wait(0.4)
+	else
+		game.Players.LocalPlayer.Character:FindFirstChild("sword").Handle.dmg.RemoteEvent:FireServer(game.Players.LocalPlayer.Character.Humanoid, - math.huge)
+	end
+	while wait() do
+		game.Players.LocalPlayer.Character.Humanoid.Health = "-nan(ind)"
+		game.Players.LocalPlayer.Character.pvp:Destroy()
+	end
+end)
+
+UICorner_3.CornerRadius = UDim.new(0, 11)
+UICorner_3.Parent = God
+
+TextBox.Parent = main
+TextBox.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+TextBox.Position = UDim2.new(0.497777581, 0, 0.226851493, 0)
+TextBox.Size = UDim2.new(0, 219, 0, 50)
+TextBox.Font = Enum.Font.SourceSans
+TextBox.PlaceholderText = "Type in a player's name to god/ungod them ( can be shortened )"
+TextBox.Text = ""
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.TextScaled = true
+TextBox.TextSize = 14.000
+TextBox.TextWrapped = true
+
+UICorner_4.CornerRadius = UDim.new(0, 11)
+UICorner_4.Parent = TextBox
+
+Desc.Name = "Desc"
+Desc.Parent = main
+Desc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Desc.BackgroundTransparency = 1.000
+Desc.Position = UDim2.new(0.0265151523, 0, 0.763466001, 0)
+Desc.Size = UDim2.new(0, 200, 0, 50)
+Desc.Font = Enum.Font.GothamBlack
+Desc.Text = "Made by: Gavriel_Scripting#5099"
+Desc.TextColor3 = Color3.fromRGB(0, 0, 0)
+Desc.TextScaled = true
+Desc.TextSize = 14.000
+Desc.TextWrapped = true
+
+Title.Name = "Title"
+Title.Parent = main
+Title.BackgroundColor3 = Color3.fromRGB(121, 121, 121)
+Title.Size = UDim2.new(0, 528, 0, 50)
+Title.Font = Enum.Font.PermanentMarker
+Title.Text = "God Mode Giver"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextStrokeTransparency = 0.000
+Title.TextWrapped = true
+
+UICorner_5.CornerRadius = UDim.new(0, 11)
+UICorner_5.Parent = Title
+
+RemoveGod.Name = "RemoveGod"
+RemoveGod.Parent = main
+RemoveGod.BackgroundColor3 = Color3.fromRGB(115, 115, 115)
+RemoveGod.Position = UDim2.new(0.0246252418, 0, 0.483173668, 0)
+RemoveGod.Size = UDim2.new(0, 200, 0, 50)
+RemoveGod.Font = Enum.Font.GothamBlack
+RemoveGod.Text = "Remove God/Kill"
+RemoveGod.TextColor3 = Color3.fromRGB(255, 255, 255)
+RemoveGod.TextScaled = true
+RemoveGod.TextSize = 14.000
+RemoveGod.TextWrapped = true
+RemoveGod.MouseButton1Down:Connect(function()
+	if game.Players.LocalPlayer.Backpack:FindFirstChild("sword") then
+        if game.Workspace[TextBox.Text].Humanoid.Health > 0 then
+			game.Players.LocalPlayer.Backpack.sword.Parent = game.Players.LocalPlayer.Character
+			game.Players.LocalPlayer.Character.sword.Handle.dmg.RemoteEvent:FireServer(game.Workspace[TextBox.Text].Humanoid, math.huge)
+			game.Players.LocalPlayer.Character.sword.Parent = game.Players.LocalPlayer.Backpack
+end
+end
+end)
+
+UICorner_6.CornerRadius = UDim.new(0, 11)
+UICorner_6.Parent = RemoveGod
+
+
+ -- scripts
+
+local function UFTBSVX_fake_script() -- TextBox.LocalScript 
+	local script = Instance.new('LocalScript', TextBox)
+
+	script.Parent.FocusLost:connect(function()
+		if script.Parent.Text == "" then
+			print("its nothing")
+		else
+			for i,v in pairs(game.Players:GetChildren()) do
+				if (string.sub(string.lower(v.Name and v.DisplayName),1,string.len(script.Parent.Text))) == string.lower(script.Parent.Text) then
+					script.Parent.Text = v.Name or v.DisplayName	
+				end
+			end
+		end
+	end)
+local function NGMZ_fake_script() -- main.dragify 
+	local script = Instance.new('LocalScript', main)
+
+	local UIS = game:GetService("UserInputService")
+	function dragify(Frame)
+		dragToggle = nil
+		local dragSpeed = 0
+		dragInput = nil
+		dragStart = nil
+		local dragPos = nil
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+		end
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+		Frame.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if input == dragInput and dragToggle then
+				updateInput(input)
+			end
+		end)
+	end
+
+	dragify(script.Parent)
+
+end
+coroutine.wrap(NGMZ_fake_script)()
+coroutine.wrap(UFTBSVX_fake_script)()
+end
